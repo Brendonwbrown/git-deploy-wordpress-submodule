@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Tweaked and tested on 6/16/14 by Brendon W. Brown
-# Credits to Ryan Sechrest for original script.
+# Credits to Ryan Sechrest for original script. https://gist.github.com/ryansechrest/8011725
 # Deploys pushed branch from the origin repository to webdir
 
 if [[ (-n $1) && (-n $2) && (-n $3) ]]; then
