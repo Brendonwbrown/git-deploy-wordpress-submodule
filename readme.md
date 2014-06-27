@@ -13,7 +13,7 @@ Here is the solution I've cobbled together from the internets.
 ###Update Git on Bluehost
 Because Bluehost shared hosts are stuck on version 1.7
 
-Enable SSH for your bluehost account, then use SSH to access your Bluehost account. Open .bashrc and add a new PATH variable pointing to git-master directory.
+Enable SSH for your bluehost account, then use SSH to access your Bluehost account. Open `.bashrc` and add a new PATH variable pointing to git-master directory.
 
 ```
 $ cd
@@ -23,7 +23,7 @@ $ nano .bashrc
 export PATH="$HOME/.local/src/git-master:$PATH"
 ``` 
 
-​Now change directory to (or create) ~/.local. Create and CD to a new directory called src.
+​Now change directory to (or create) `~/.local`. Create and CD to a new directory called src.
 
 ```
 $ mkdir .local && cd .local
@@ -50,14 +50,14 @@ $ git --version
 
 ##Setting up Server files
 
-Ssh into the server set up a bare repository at ~/repositories. Don't make an individual repo, the script will do that. Also create ~/public_html/production and ~/public_html/staging while you're at it.
+Ssh into the server set up a bare repository at `~/repositories`. Don't make an individual repo, the script will do that. Also create `~/public_html/production` and `~/public_html/staging` while you're at it.
 
 ```
 $ mkdir ~/repositories && cd ~/repositories
 $ mkdir ~/public_html/production && ~/public_html/staging
 ```
 
-Update "post-receive.sh" `homedir` variable with the server-specific path and copy it to the repository directory.
+Update `post-receive.sh` variable `homedir` with the server-specific path and copy it to the repository directory.
 
 Open .bashrc and paste the `newgit()` function updated with server-specific path in `homedir` variable.
 
@@ -88,7 +88,7 @@ newgit()
 
 ```
 
-You now have a new function newgit to be run in terminal. When run like so `newgit environment domain.tld` it will create a new bare repository environment.domain.tld.git with a post-receive hook that clones all relevant files to `~/public_html/environment/domain.tld` after a push (while also respecting submodules).
+You now have a new function newgit to be run in terminal. When run like so `newgit environment domain.tld` it will create a new bare repository `environment.domain.tld.git` with a post-receive hook that clones all relevant files to `~/public_html/environment/domain.tld` after a push (while also respecting submodules).
 
 ##Set up Local Machine
 
