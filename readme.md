@@ -2,9 +2,16 @@
 
 version 0.0.1
 
+Deploying a website with Git is awesomely simple as long as your awesome project is simple. For Wordpress theme developers, the ideal process of designing themes in a `content` folder alongside and separate from an untouched `wordpress` submodule directory adds a whole new level of deployment complexity and head-scratching, cryptic error messages, fatal reports concerning trees and heads. This gets worse on a shared host like Bluehost, where updating software plays second fiddle to their legendary customer support.
+
+Here is the solution I've cobbled together from the internets.
+
+1. Update Git on Bluehost
+2. Set up directories, add universal post-receive.sh, post-add a custom .bashrc function for easy automation of bare repo creation with relative post-receive hooks.
+3. Set up local machine.
+
 ###Update Git on Bluehost
 Because Bluehost shared hosts are stuck on version 1.7
-
 
 Enable SSH for your bluehost account, then use SSH to access your Bluehost account. Open .bashrc and add a new PATH variable pointing to git-master directory.
 
@@ -90,3 +97,8 @@ Add server remotes to local git repositories. `ssh://user@domain.tld/home/userna
 Push the appropriate branch to the bare repo `git push remote master`. This should be a successful push. If you get fatal errors in the log, it's probably a mistyped directory in any of these config files we set up.
 
 Add dummy files `production_env` and `staging_env` to appropriate directories in public_html directory for `wp-config.php` setup.
+
+
+---
+
+Credits: This is a compilation of scripts cobbled together from my reseach into several sources which I intend to find and list in the near future.
