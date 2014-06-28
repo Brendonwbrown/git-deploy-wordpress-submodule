@@ -1,6 +1,6 @@
 #Setting up a git deploy environment on Bluehost
 
-version 0.0.1
+*version 0.0.1*
 
 Deploying a website with Git is awesomely simple as long as your awesome project is simple. For Wordpress theme developers, the ideal process of designing themes in a `content` folder alongside and separate from an untouched `wordpress` submodule directory adds a whole new level of deployment complexity and head-scratching, cryptic error messages, fatal reports concerning trees and heads. This gets worse on a shared host like Bluehost, where updating software plays second fiddle to their legendary customer support.
 
@@ -15,24 +15,24 @@ Because Bluehost shared hosts are stuck on version 1.7
 
 Enable SSH for your bluehost account, then use SSH to access your Bluehost account. Open `.bashrc` and add a new PATH variable pointing to git-master directory.
 
-```
+```bash
 $ cd
 $ nano .bashrc
 
 # Add updated Git binaries location
 export PATH="$HOME/.local/src/git-master:$PATH"
-``` 
+```
 
 ​Now change directory to (or create) `~/.local`. Create and CD to a new directory called src.
 
-```
+```bash
 $ mkdir .local && cd .local
 $ mkdir src && cd src
 ```
 
 Download the Git source code into src, unzip, remove .zip, install. 
 
-```
+```bash
 $ wget --no-check-certificate https://github.com/git/git/archive/master.zip
 $ unzip master
 $ rm master.zip
@@ -44,7 +44,7 @@ $ make install
 
 ​Once the source has compiled and installed, log out and in, test the installation by entering the following command, and it should report any version higher than 1.7.11.3
 
-```
+```bash
 $ git --version
 ```
 
@@ -61,10 +61,10 @@ Update `post-receive.sh` variable `homedir` with the server-specific path and co
 
 Open .bashrc and paste the `newgit()` function updated with server-specific path in `homedir` variable.
 
-```
+```bash
 nano ~/.bashrc
 ```
-```
+```bash
 #.bashrc function to create and prep for push and deploy
 newgit()  
 {
@@ -101,4 +101,7 @@ Add dummy files `production_env` and `staging_env` to appropriate directories in
 
 ---
 
-Credits: This is a compilation of scripts cobbled together from my reseach into several sources which I intend to find and list in the near future.
+Credits: This is a compilation of scripts cobbled together from my reseach into several sources which I have attempted to list below.
+
+- [Marco Mornati](http://blog.mornati.net/create-git-repository-on-shared-host/) for the `newgit()` bash script.
+- [Ryan Sechrest](https://gist.github.com/ryansechrest/8011725) for the original `post-receive.sh` deploy script.
